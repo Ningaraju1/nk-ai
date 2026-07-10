@@ -2,14 +2,28 @@
 
 AI-powered Industrial Sales Engineer
 
-Status
+**Status**: 🚧 Under Development
 
-🚧 Under Development
+## Overview
 
-Tech Stack
+## Features
+
+## Architecture
+
+## Tech Stack
 
 - Django
 - React
 - OpenSearch
 - Qdrant
 - HuggingFace
+
+## Project Structure
+
+## Getting Started
+
+## Development Workflow
+
+## Roadmap
+
+## License
