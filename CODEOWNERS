@@ -1,0 +1,9 @@
+# This file dictates who owns which files or directories in this repository.
+
+# Fallback (The default owner for everything)
+*       @Ningaraju1
+
+# Example for specific directories or files
+# /backend/   @backend-team
+# /frontend/  @frontend-team
+
