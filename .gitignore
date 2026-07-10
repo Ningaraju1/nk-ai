@@ -1,45 +1,27 @@
-# Dependencies
-node_modules/
-.venv/
-venv/
-env/
-
+# -------------------------
 # Python
+# -------------------------
+
 __pycache__/
 *.py[cod]
-*$py.class
-.pytest_cache/
-.coverage
-coverage/
-htmlcov/
+*.pyo
 
-# Build and Dist
-dist/
-build/
-out/
+# Virtual Environment
+backend/.venv/
+.venv/
 
 # Environment Variables
+backend/.env
 .env
-.env.local
-.env.*.local
 
-# IDEs and Editors
+# SQLite
+backend/db.sqlite3
+
+# VS Code
 .vscode/
-.idea/
-*.swp
-*.swo
 
-# OS generated files
+# macOS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
 
 # Logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
