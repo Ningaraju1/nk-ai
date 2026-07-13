@@ -22,6 +22,29 @@ services:
 
     restart: unless-stopped
 
+  celery:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+
+    container_name: nk-ai-celery
+
+    command: celery -A config worker --loglevel=info
+
+    volumes:
+      - ./backend:/app
+
+    working_dir: /app
+
+    env_file:
+      - .env.example
+
+    depends_on:
+      - postgres
+      - redis
+
+    restart: unless-stopped
+
   postgres:
     image: postgres:17
 
