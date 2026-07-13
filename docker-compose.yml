@@ -1,5 +1,6 @@
 services:
   backend:
+  
     build:
       context: .
       dockerfile: docker/backend/Dockerfile
@@ -20,3 +21,38 @@ services:
       - .env.example
 
     restart: unless-stopped
+
+  postgres:
+    image: postgres:17
+
+    container_name: nk-ai-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: nk_ai
+      POSTGRES_USER: nk_ai
+      POSTGRES_PASSWORD: nk_ai_password
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+
+    container_name: nk-ai-adminer
+
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  
