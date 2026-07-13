@@ -58,6 +58,9 @@ INSTALLED_APPS = [
 
     # Third Party
     "rest_framework",
+
+    # Local Apps new app
+    "apps.core_api",
 ]
 
 # -----------------------------------------------------------------------------
