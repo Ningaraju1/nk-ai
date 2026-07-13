@@ -91,6 +91,48 @@ services:
     volumes:
       - redis_data:/data
 
+  opensearch:
+    image: opensearchproject/opensearch:2.19.1
+    container_name: nk-ai-opensearch
+
+    environment:
+      discovery.type: single-node
+      bootstrap.memory_lock: "true"
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+      DISABLE_SECURITY_PLUGIN: "true"
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+
+    restart: unless-stopped
+
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.19.1
+
+    container_name: nk-ai-opensearch-dashboards
+
+    ports:
+      - "5601:5601"
+
+    environment:
+      OPENSEARCH_HOSTS: '["http://opensearch:9200"]'
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
+
+    depends_on:
+      - opensearch
+
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   redis_data:
+  opensearch_data:
