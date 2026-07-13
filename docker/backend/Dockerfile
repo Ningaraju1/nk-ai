@@ -1,31 +1,34 @@
-#
+# Base Image
 FROM python:3.13-slim
 
-# Prevent Python from writing .pyc files
+# Prevent Python from writing pyc files
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Print logs directly
+# Flush Python output immediately
 ENV PYTHONUNBUFFERED=1
 
-# Set working directory
+# Working directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system packages
 RUN apt-get update && apt-get install -y \
+    gcc \
     build-essential \
     libpq-dev \
-    gcc \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements
-COPY backend/requirements/ ./requirements/
+# Upgrade pip
+RUN pip install --upgrade pip
 
-# Install Python dependencies
-RUN pip install --upgrade pip && \
-    pip install -r requirements/development.txt
+# Copy requirements
+COPY backend/requirements ./requirements
+
+# Install dependencies
+RUN pip install -r requirements/development.txt
 
 # Copy backend source
-COPY backend/ .
+COPY backend .
 
 # Expose Django port
 EXPOSE 8000
