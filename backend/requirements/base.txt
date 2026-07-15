@@ -4,7 +4,9 @@ python-dotenv
 django-environ
 psycopg[binary]
 django-redis
-celery
 redis
 opensearch-py
 qdrant-client
+celery
+django-celery-results
+django-celery-beat
