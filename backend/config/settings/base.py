@@ -189,3 +189,22 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_TASK_ALWAYS_EAGER = False
+
+# ==========================================================
+# OPENSEARCH
+# ==========================================================
+
+OPENSEARCH_HOST = env(
+    "OPENSEARCH_HOST",
+    default="http://opensearch:9200",
+)
+
+OPENSEARCH_USERNAME = env(
+    "OPENSEARCH_USERNAME",
+    default="",
+)
+
+OPENSEARCH_PASSWORD = env(
+    "OPENSEARCH_PASSWORD",
+    default="",
+)
