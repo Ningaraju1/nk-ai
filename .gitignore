@@ -25,3 +25,6 @@ backend/db.sqlite3
 
 # Logs
 *.log
+
+# Celery Beat
+celerybeat-schedule*

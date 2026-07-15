@@ -10,3 +10,5 @@ qdrant-client
 celery
 django-celery-results
 django-celery-beat
+djangorestframework-simplejwt
+
