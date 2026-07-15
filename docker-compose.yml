@@ -132,7 +132,20 @@ services:
 
     restart: unless-stopped
 
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: nk-ai-qdrant
+    restart: unless-stopped
+
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+
+    volumes:
+      - qdrant_data:/qdrant/storage
+
 volumes:
   postgres_data:
   redis_data:
   opensearch_data:
+  qdrant_data:
