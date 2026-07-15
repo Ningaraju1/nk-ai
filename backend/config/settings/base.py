@@ -242,3 +242,7 @@ QDRANT = {
         default="nk-ai",
     ),
 }
+
+
+# Custom User Model
+AUTH_USER_MODEL = "users.User"
