@@ -6,3 +6,4 @@ psycopg[binary]
 django-redis
 celery
 redis
+opensearch-py
