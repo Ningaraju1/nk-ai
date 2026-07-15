@@ -8,9 +8,11 @@ class User(AbstractUser):
     """
 
     class Role(models.TextChoices):
+        SUPER_ADMIN = "SUPER_ADMIN", "Super Admin"
         ADMIN = "ADMIN", "Admin"
-        USER = "USER", "User"
+        DEVELOPER = "DEVELOPER", "Developer"
         SUPPORT = "SUPPORT", "Support"
+        USER = "USER", "User"
 
     email = models.EmailField(
         unique=True,
@@ -32,6 +34,30 @@ class User(AbstractUser):
 
 
     objects = UserManager()
-    
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
+
+
+    @property
+    def is_admin(self):
+        return self.role in [
+            self.Role.ADMIN,
+            self.Role.SUPER_ADMIN,
+        ]
+
+    @property
+    def is_super_admin(self):
+        return self.role == self.Role.SUPER_ADMIN
+
+    @property
+    def is_developer(self):
+        return self.role == self.Role.DEVELOPER
+
+    @property
+    def is_support(self):
+        return self.role == self.Role.SUPPORT
+
+    @property
+    def is_regular_user(self):
+        return self.role == self.Role.USER
