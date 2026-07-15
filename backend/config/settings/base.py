@@ -208,3 +208,19 @@ OPENSEARCH_PASSWORD = env(
     "OPENSEARCH_PASSWORD",
     default="",
 )
+
+
+QDRANT = {
+    "HOST": env(
+        "QDRANT_HOST",
+        default="localhost",
+    ),
+    "PORT": env.int(
+        "QDRANT_PORT",
+        default=6333,
+    ),
+    "COLLECTION": env(
+        "QDRANT_COLLECTION",
+        default="nk-ai",
+    ),
+}
