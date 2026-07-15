@@ -45,6 +45,29 @@ services:
 
     restart: unless-stopped
 
+  celery-beat:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+
+    container_name: nk-ai-celery-beat
+
+    command: celery -A config beat --loglevel=info
+
+    volumes:
+      - ./backend:/app
+
+    working_dir: /app
+
+    env_file:
+      - .env.example
+
+    depends_on:
+      - postgres
+      - redis
+
+    restart: unless-stopped
+
   postgres:
     image: postgres:17
 
